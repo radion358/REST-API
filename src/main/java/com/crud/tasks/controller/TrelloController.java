@@ -1,7 +1,6 @@
 package com.crud.tasks.controller;
 
 import com.crud.tasks.domain.TrelloBoardDto;
-import com.crud.tasks.exception.TrelloBoardNotFoundException;
 import com.crud.tasks.trello.client.TrelloClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +19,7 @@ public class TrelloController {
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
     public void getTrelloBoards() {
 
-        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards().orElseThrow(TrelloBoardNotFoundException::new);
+        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
 
         for (TrelloBoardDto trelloBoardDto : trelloBoards) {
             if (isKodillaBoard(trelloBoardDto)) {
