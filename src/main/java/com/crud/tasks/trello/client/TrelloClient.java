@@ -1,7 +1,6 @@
 package com.crud.tasks.trello.client;
 
 import com.crud.tasks.domain.TrelloBoardDto;
-import com.crud.tasks.exception.TrelloBoardNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -9,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +36,7 @@ public class TrelloClient {
 
         Optional<TrelloBoardDto[]> boardsResponse = Optional.of(restTemplate.getForObject(url, TrelloBoardDto[].class));
 
-        return Arrays.asList(boardsResponse.orElseThrow(TrelloBoardNotFoundException::new));
+        return boardsResponse.map(Arrays::asList).orElseGet(ArrayList::new);
     }
 
     private URI getUri() {
