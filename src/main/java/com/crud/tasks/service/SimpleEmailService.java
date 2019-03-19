@@ -6,7 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SimpleEmailService {
     private final static Logger LOGGER = LoggerFactory.getLogger(SimpleMailMessage.class);
     private JavaMailSender javaMailSender;
