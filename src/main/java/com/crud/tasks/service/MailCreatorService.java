@@ -27,9 +27,9 @@ public class MailCreatorService {
         context.setVariable("tasks_url", "https://radoslaw-dauksza.github.io/radoslaw.dauksza.github.io/");
         context.setVariable("button", "Visit website");
         context.setVariable("admin_name", adminConfig.getAdminName());
-        context.setVariable("company_details", companyConfig.getCompanyName() + "\n"
-                + companyConfig.getCompanyGoal() + "\n"
-                + companyConfig.getCompanyEmail() + "\n"
+        context.setVariable("company_details", companyConfig.getCompanyName() + " "
+                + companyConfig.getCompanyGoal() + " "
+                + companyConfig.getCompanyEmail() + " "
                 + companyConfig.getCompanyPhone());
         context.setVariable("goodbye_message", "Have a nice day");
         context.setVariable("preview_message", message.substring(0, 50));
