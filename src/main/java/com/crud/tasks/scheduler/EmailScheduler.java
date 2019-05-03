@@ -21,6 +21,7 @@ public class EmailScheduler {
         this.adminConfig = adminConfig;
     }
 
+
     @Scheduled(cron = "0 0 16 * * *")
     public void sendInformationEmail() {
         long size = taskRepository.count();

@@ -48,7 +48,11 @@ public class SimpleEmailService {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getReceiverEmail());
             messageHelper.setSubject(mail.getSubject());
-            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
+            if (mail.getMessage().contains("currently in database you got:")) {
+                messageHelper.setText(mailCreatorService.buildSheduledInformationEmail(mail.getMessage()), true);
+            } else {
+                messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
+            }
         };
 
     }
